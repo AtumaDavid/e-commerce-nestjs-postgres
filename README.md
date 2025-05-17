@@ -8,6 +8,8 @@ Dependencies
 - reflect-metadata: Metadata reflection for TypeScript (`npm install reflect-metadata --save`)
 - node typings: (`npm install @types/node --save-dev`)
 - nestjs typeorm integration (`npm install --save @nestjs/typeorm`)
+- class-validator: Decorator-based validation for DTOs (`npm install --save class-validator`)
+- class-transformer: Transforms plain objects to class instances and handles serialization (`npm install --save class-transformer`)
 - dotenv (`npm i dotenv`)
 
 ## Modules
