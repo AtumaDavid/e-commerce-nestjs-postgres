@@ -17,3 +17,29 @@ Dependencies
 - orders
 - shipping info
 - category
+
+## Database Commands
+
+The following commands are available for managing the database and migrations:
+
+```
+"scripts": {
+    "typeorm": "npm run build && npx typeorm -d dist/db/data-source.js",
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:revert": "npm run typeorm -- migration:revert",
+    "db:drop": "npm run typeorm schema:drop"
+}
+```
+
+- **typeorm**: Base command that builds your project and runs TypeORM with your data source configuration.
+- **migration:generate**: Creates a new migration file with SQL statements...
+
+  - `npm run migration:generate -- db/migrations/initial`
+
+- **migration:run**: Applies pending migrations to update your database schema...
+  - `npm run migration:run`
+- **migration:revert**: Rolls back the most recent migration...
+  - `npm run migration:revert`
+- **db:drop**: Completely drops all tables from your database...
+  - `npm run db:drop`
