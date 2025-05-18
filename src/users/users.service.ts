@@ -3,7 +3,6 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -11,7 +10,7 @@ import { UserEntity } from './entities/user.entity';
 import { UserSignUpDto } from './dto/user-signup.dto';
 import { hash, compare } from 'bcrypt';
 import { UserSignInDto } from './dto/user-signin.dto';
-import { sign } from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UsersService {
@@ -57,15 +56,20 @@ export class UsersService {
   }
 
   async getAccessToken(user: UserEntity): Promise<string> {
-    return sign(
+    const secret = process.env.ACCESS_TOKEN_SECRET;
+    if (!secret) {
+      throw new Error('ACCESS_TOKEN_SECRET is not defined');
+    }
+    const options = {
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRATION_TIME,
+    } as jwt.SignOptions;
+    return jwt.sign(
       {
         id: user.id,
         email: user.email,
       },
-      process.env.ACCESS_TOKEN_SECRET,
-      {
-        expiresIn: process.env.ACCESS_TOKEN_EXPIRATION_TIME,
-      },
+      secret,
+      options,
     );
   }
 
