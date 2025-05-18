@@ -11,6 +11,8 @@ Dependencies
 - class-validator: Decorator-based validation for DTOs (`npm install --save class-validator`)
 - class-transformer: Transforms plain objects to class instances and handles serialization (`npm install --save class-transformer`)
 - dotenv (`npm i dotenv`)
+- Json Web Token (`npm i jsonwebtoken`)
+- Hash Password (`npm i bcrypt`)
 
 ## Modules
 
