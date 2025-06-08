@@ -26,7 +26,7 @@ Dependencies
 
 The following commands are available for managing the database and migrations:
 
-```
+```json
 "scripts": {
     "typeorm": "npm run build && npx typeorm -d dist/db/data-source.js",
     "migration:generate": "npm run typeorm -- migration:generate",
@@ -47,3 +47,5 @@ The following commands are available for managing the database and migrations:
   - `npm run migration:revert`
 - **db:drop**: Completely drops all tables from your database...
   - `npm run db:drop`
+
+**`REQUEST => (Middleware) => (Guards) => {Interceptors} => HANDLER/CONTROLLER => {Iterceptors} => RESPONSE`**
